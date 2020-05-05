@@ -505,20 +505,7 @@ func (p *PrometheusStore) translateAndExtendLabels(m []prompb.Label, extend labe
 		})
 	}
 
-	return extendLset(lset, extend)
-}
-
-func extendLset(lset []storepb.Label, extend labels.Labels) []storepb.Label {
-	for _, l := range extend {
-		lset = append(lset, storepb.Label{
-			Name:  l.Name,
-			Value: l.Value,
-		})
-	}
-	sort.Slice(lset, func(i, j int) bool {
-		return lset[i].Name < lset[j].Name
-	})
-	return lset
+	return storepb.ExtendLabels(lset, extend)
 }
 
 // LabelNames returns all known label names.

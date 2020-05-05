@@ -11,6 +11,8 @@ We use *breaking* word for marking changes that are not backward compatible (rel
 
 ## Unreleased
 
+TODO: Add rules API, also now StoreAPI consistently solves clashes in external labels vs metrics - by choosing external always.
+
 ### Fixed
 
 - [#2033](https://github.com/thanos-io/thanos/pull/2033) minio-go: Fixed Issue #1494 support Web Identity providers for IAM credentials for AWS EKS

@@ -30,9 +30,12 @@ service Rules {
 
 message RulesRequest {
     enum Type {
-        ALL       = 0;
-        ALERTING  = 1;
-        RECORDING = 2;
+        ALL = 0;
+        /// This will make sure strings.ToLower(.String()) will match 'alert' and 'record' values for
+        /// Prometheus HTTP API.
+        /// NOTE: The implementation has to return empty rule groups as well.
+        ALERT  = 1;
+        RECORD = 2;
     }
     Type type = 1;
     PartialResponseStrategy partial_response_strategy = 2;
@@ -40,7 +43,7 @@ message RulesRequest {
 
 message RulesResponse {
     oneof result {
-        // It is up to server implementation to decide how many of those to put here.
+        /// group for rule groups. It is up to server implementation to decide how many of those to put here within single frame.
         RuleGroup group = 1;
 
         /// warning is considered an information piece in place of series for warning purposes.

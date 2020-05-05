@@ -27,7 +27,7 @@ const logLevel = "info"
 
 // TODO(bwplotka): Run against multiple?
 func DefaultPrometheusImage() string {
-	return "quay.io/prometheus/prometheus:v2.16.0"
+	return "quay.io/prometheus/prometheus:v2.18.0"
 }
 
 func DefaultAlertmanagerImage() string {
